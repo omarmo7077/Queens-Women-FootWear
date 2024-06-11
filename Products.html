@@ -1,0 +1,296 @@
+<head>
+    <meta charset="UTF-8">
+    <style data-styles="">
+        ion-icon {
+            visibility: hidden
+        }
+
+        .hydrated {
+            visibility: inherit
+        }
+
+        body {
+            padding-top: 1px !important;
+        }
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footcap - Find your footware</title>
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- 
+    - preload banner
+  -->
+    <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<div id="preloader">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
+<article>
+
+    <section class="section product">
+        <div class="container">
+
+            <h2 class="h2 section-title">Products</h2>
+
+            <ul class="filter-list">
+
+                <li>
+                    <button class="filter-btn  active">All</button>
+                </li>
+
+                <li>
+                    <button class="filter-btn">Men</button>
+                </li>
+
+                <li>
+                    <button class="filter-btn">Women</button>
+                </li>
+
+                <li>
+                    <button class="filter-btn">Kids</button>
+                </li>
+            </ul>
+
+            <ul class="product-list">
+
+
+            </ul>
+            <div class="pagination m-50" style="display: flex; justify-content: center; align-items: center;">
+                <button class="cus-btn flex center align-items" id="prevPageBtn">
+                    <ion-icon name="arrow-back-outline" role="img" class="md hydrated"
+                        aria-label="arrow back outline"></ion-icon>
+
+                </button>
+                <button class="cus-btn flex center align-items" id="nextPageBtn">
+                    <ion-icon name="arrow-forward-outline" role="img" class="md hydrated"
+                        aria-label="arrow forward outline"></ion-icon>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Modal structure -->
+    <div class="modal">
+        <div class="modal-content">
+            <!-- Product details will be inserted here dynamically -->
+        </div>
+    </div>
+
+
+
+    <!-- 
+        - #CTA
+      -->
+
+
+
+
+
+
+
+    <!-- 
+        - #SERVICE
+      -->
+
+
+
+
+
+
+
+    <!-- 
+        - #INSTA POST
+      -->
+
+
+
+</article>
+<script>
+    function showPreloader() {
+        document.getElementById('preloader').classList.remove('hidden');
+
+
+    }
+
+    // Function to hide preloader
+    function hidePreloader() {
+        document.getElementById('preloader').classList.add('hidden');
+
+
+    }
+
+    // Fetch product details after 2 seconds
+    setTimeout(() => {
+
+        hidePreloader(); // Hide preloader after 2 seconds
+        // Fetch product details
+    }, 500);
+</script>
+
+</main>
+<footer class="footer">
+
+    <div class="footer-top section">
+        <div class="container">
+
+            <div class="footer-brand">
+
+                <a href="#" class="logo">
+                    <img src="./assets/images/logo.svg" width="160" height="50" alt="Footcap logo">
+                </a>
+
+                <ul class="social-list">
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-facebook" role="img" class="md hydrated"
+                                aria-label="logo facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-twitter" role="img" class="md hydrated"
+                                aria-label="logo twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-pinterest" role="img" class="md hydrated"
+                                aria-label="logo pinterest"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-linkedin" role="img" class="md hydrated"
+                                aria-label="logo linkedin"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-end flex space-around">
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-list-title">Contact Us</p>
+                    </li>
+
+                    <li>
+                        <address class="footer-link">
+                            <ion-icon name="location" role="img" class="md hydrated" aria-label="location"></ion-icon>
+
+                            <span class="footer-link-text">
+                                2751 S Parker Rd, Aurora, CO 80014, United States
+                            </span>
+                        </address>
+                    </li>
+
+                    <li>
+                        <a href="tel:+557343673257" class="footer-link">
+                            <ion-icon name="call" role="img" class="md hydrated" aria-label="call"></ion-icon>
+
+                            <span class="footer-link-text">+557343673257</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mailto:footcap@help.com" class="footer-link">
+                            <ion-icon name="mail" role="img" class="md hydrated" aria-label="mail"></ion-icon>
+
+                            <span class="footer-link-text">footcap@help.com</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+
+
+                <div class="footer-list">
+
+                    <p class="footer-list-title">Newsletter</p>
+
+                    <p class="newsletter-text">
+                        Authoritatively morph 24/7 potentialities with error-free partnerships.
+                    </p>
+
+                    <form action="" class="newsletter-form">
+                        <input type="email" name="email" required="" placeholder="Email Address"
+                            class="newsletter-input">
+
+                        <button type="submit" class="btn2 btn-primary">Subscribe</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</footer>
+
+
+
+
+
+<!-- 
+    - #GO TO TOP
+  -->
+
+<a href="#top" class="go-top-btn" data-go-top="">
+    <ion-icon name="arrow-up-outline" role="img" class="md hydrated" aria-label="arrow up outline"></ion-icon>
+</a>
+<!-- 
+    - custom js link
+  -->
+<script src="./assets/js/script.js"></script>
+<script src="./assets/js/cart-modal.js"></script>
+
+
+<!-- 
+    - ionicon link
+  -->
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="./assets/js/route.js"></script>
+<script src="./assets/js/flip-img.js"></script>

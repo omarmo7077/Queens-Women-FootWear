@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+
+<!-- // -->
+<html lang="en" class="hydrated">
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .formbold-main-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px;
+        }
+
+        .formbold-form-wrapper {
+            margin: 0 auto;
+            max-width: 570px;
+            width: 100%;
+            background: white;
+            padding: 40px;
+        }
+
+        .formbold-form-img {
+            margin-bottom: 45px;
+        }
+
+        .formbold-input-group {
+            margin-bottom: 18px;
+        }
+
+        .formbold-form-select {
+            width: 100%;
+            padding: 12px 22px;
+            border-radius: 5px;
+            border: 1px solid #dde3ec;
+            background: #ffffff;
+            font-size: 16px;
+            color: #536387;
+            outline: none;
+            resize: none;
+        }
+
+        .formbold-input-radio-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .formbold-radio-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .formbold-radio-label {
+            font-size: 14px;
+            line-height: 24px;
+            color: #07074d;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .formbold-input-radio {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .formbold-radio-checkmark {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #ffffff;
+            border: 1px solid #dde3ec;
+            border-radius: 50%;
+        }
+
+        .formbold-radio-label .formbold-input-radio:checked~.formbold-radio-checkmark {
+            background-color: #6a64f1;
+        }
+
+        .formbold-radio-checkmark:after {
+            content: '';
+            position: absolute;
+            display: none;
+        }
+
+        .formbold-radio-label .formbold-input-radio:checked~.formbold-radio-checkmark:after {
+            display: block;
+        }
+
+        .formbold-radio-label .formbold-radio-checkmark:after {
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffffff;
+            transform: translate(-50%, -50%);
+        }
+
+        .formbold-form-input {
+            width: 100%;
+            padding: 13px 13px;
+            border-radius: 5px;
+            border: 1px solid #dde3ec;
+            background: #ffffff;
+            font-weight: 500;
+            font-size: 16px;
+            color: #000000;
+            outline: none;
+            resize: none;
+        }
+
+        .formbold-form-input::placeholder {
+            color: #536387;
+        }
+
+        .formbold-form-input:focus {
+            border-color: #6a64f1;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .formbold-form-label {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: #000000;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 24px;
+            font-style: italic;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .formbold-btn {
+            text-align: center;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 14px 25px;
+            border: none;
+            font-weight: 500;
+            background-color: #6a64f1;
+            color: white;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        .formbold-btn:hover {
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .center {
+            justify-content: center;
+        }
+
+        .space-between {
+            justify-content: space-between;
+        }
+
+        .space-evenly {
+            justify-content: space-evenly;
+        }
+
+        .align-items {
+            align-items: center;
+        }
+
+        @media (max-width: 991px) {
+            .color-value {
+                display: none !important;
+
+            }
+        }
+
+        .m-LR-2 {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+        .mb-3 {
+            margin-bottom: 3px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .p5 {
+            padding: 5px !important;
+        }
+
+        .point {
+            cursor: pointer;
+        }
+
+        .color-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .color-input-wrapper input[type="text"] {
+            width: 100px;
+        }
+
+        .color-input-wrapper input[type="color"] {
+            margin: 2;
+            width: 30px;
+            height: 30px;
+            border: none;
+            position: absolute;
+            right: 5;
+        }
+
+        .border-div {
+
+            border-radius: 5px;
+            padding: 3px;
+            border: 2px solid gainsboro;
+        }
+
+        .width-50-perc {
+            width: 50%;
+        }
+
+
+
+        .add-product-cart {
+            border-radius: 10px;
+            padding: 8px 20px 8px 20px;
+            box-shadow: 2px 2px 8px 8px rgb(142 142 142 / 10%);
+        }
+
+        .shadow {
+            box-shadow: 5px 5px 5px 4px rgb(142 142 142 / 15%) !important;
+
+        }
+
+        .i-div {
+            margin: 5px;
+            width: -webkit-fill-available;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .no-bg-i {
+            background: none;
+        }
+
+        .no-bg-i:hover {
+            color: #646464;
+        }
+
+        .circle {
+            width: 20px;
+            /* Width of the circle */
+            height: 20px;
+            /* Height of the circle */
+
+            /* Background color of the circle */
+            border-radius: 50%;
+            /* Make it circular */
+            border: 1px solid gray
+        }
+
+        .mr-3 {
+            margin-right: 3px;
+        }
+
+        .addbtn {
+            color: black;
+            background-color: white;
+            border: 1px solid rgba(255, 255, 255, 0);
+            padding: 0px 5px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px 1px rgb(142 142 142 / 50%);
+            margin: 5px;
+
+        }
+
+        .addbtn:hover {
+            color: #ffffff;
+            background-color: #000000;
+        }
+
+        .bi-plus-square:hover {
+            color: #ffffff;
+            background-color: #000000;
+        }
+
+        /* Style the placeholder text */
+        .formbold-form-input::placeholder {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            /* Change the font family */
+            font-size: 14px;
+            /* Change the font size */
+            color: #888;
+            /* Change the font color */
+            font-style: italic;
+            /* Change the font style */
+        }
+
+        /* Style the options inside the select element */
+        .formbold-form-input option {
+            font-style: italic;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            /* Change the font family */
+        }
+
+        select.formbold-form-input {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-style: italic;
+
+        }
+
+        /* Custom styles for SweetAlert2 popups */
+        .swal2-custom {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-style: italic;
+        }
+
+
+        textarea.formbold-form-input {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-style: italic;
+        }
+
+        /* Style all input elements */
+        input {
+            font-style: italic;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        }
+
+        .end {
+            justify-content: end !important;
+        }
+
+        .ml-auto {
+            margin-left: auto;
+        }
+
+        .cus-btn {
+            height: 30px;
+            padding: 2px 5px;
+            color: black;
+            background-color: white;
+            margin-left: auto;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px 1px rgb(142 142 142 / 50%);
+        }
+
+        .formbold-sub-btn {
+            position: relative;
+            padding-right: 40px;
+            /* Adjust to accommodate the spinner */
+        }
+
+        .spinner {
+
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            /* position: absolute; */
+            position: static;
+            right: 10px;
+            top: 50%;
+
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading .spinner {
+            display: inline-block;
+        }
+
+        .loading .formbold-sub-btn {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+
+    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> -->
+
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap"
+        rel="stylesheet">
+    <!-- //sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- 
+    - preload banner
+  -->
+    <!-- <link rel="preload" href="./assets/images/hero-banner.png" as="image">  -->
+
+
+</head>
+
+<body id="top">
+    <div class="nav flex center">
+        <div class="elment flex">
+            <div class="elment">add products</div>
+            <div class="elment">orders</div>
+
+        </div>
+    </div>
+    <main>
+        <div class="formbold-form-wrapper">
+            <img src="./assets/images/logo.svg">
+
+            <!-- <form action="https://formbold.com/s/FORM_ID" method="POST">
+            <div class="formbold-input-group">
+                <label for="name" class="formbold-form-label"> Product-Title </label>
+                <input type="text" name="name" id="producttitle" placeholder="Enter your product title"
+                    class="formbold-form-input shadow" />
+            </div>
+            <div class="formbold-input-group">
+                <label for="name" class="formbold-form-label"> Brand-Name </label>
+                <input type="text" name="name" id="brandname" placeholder="Enter your brand name"
+                    class="formbold-form-input shadow" />
+            </div>
+            <div class="formbold-input-group">
+                <div class="flex center align-items">
+                    <div class="formbold-input-group m-LR-2" style="width: 40%;">
+                        <label for="name" class="formbold-form-label"> Price </label>
+                        <input type="text" name="name" id="productprice" placeholder="EGP"
+                            class="formbold-form-input shadow" />
+                    </div>
+                    <div class="formbold-input-group m-LR-2" style="width: 40%;">
+                        <label for="name" class="formbold-form-label"> Sale</label>
+                        <input type="text" name="name" id="sale-amount" placeholder="%"
+                            class="formbold-form-input shadow" />
+                    </div>
+                    <div class="formbold-input-group m-LR-2" style="width: 40%;">
+                        <label for="category" class="formbold-form-label">Category</label>
+                        <div class="shadow">
+                            <select style="height: 49px;" name="category" id="category" class="formbold-form-input">
+                                <option value="men">Men</option>
+                                <option value="women">Women</option>
+                                <option value="kids">Kids</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="formbold-input-group">
+                <label for="message" class="formbold-form-label">
+                    Product Description
+                </label>
+                <textarea rows="6" name="message" id="productdescription" placeholder="Type product description here..."
+                    class="formbold-form-input shadow"></textarea>
+            </div>
+            <div class="formbold-input-group">
+                <div class="flex center  align-items shadow p5 mb-20">
+                    <label for="name" class="formbold-form-label" style="margin-bottom:0 !important;"> Add Products
+                    </label>
+                    <button class="formbold-form-label point addbtn" id="add-more">
+                        <i class="bi bi-plus-square"></i>
+                    </button>
+                </div>
+
+                <div id="input-container">
+
+
+
+
+                </div>
+            </div>
+
+
+            <script>
+                let count = 0;
+
+                document.getElementById('add-more').addEventListener('click', function () {
+                    count++;
+                    const inputContainer = document.getElementById('input-container');
+
+                    const newInputSet = document.createElement('div');
+                    newInputSet.classList.add('flex', 'center', 'input-set', 'mb-3', 'flex-wrap', 'mb-30', 'add-product-cart', 'product-record', 'shadow');
+                    newInputSet.id = `p${count}`;
+
+                    newInputSet.innerHTML = `
+                            <div class="i-div align-items">
+                                <button style="border: none; margin-left:5px;margin-bottom: 0px;" class="formbold-form-label point toggle-expand no-bg-i cus-btn ">
+                                    <i class="bi bi-arrows-angle-contract no-bg-i"></i>
+                                    <i class="bi bi-arrows-angle-expand none no-bg-i"></i>
+                                </button>
+                                <button style="border: none; margin-left:auto" class=" point no-bg-i toggle-delete ml-auto cus-btn ">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                                <div class="flex center align-items ml-auto">
+                                    <h5 class="none mr-3" id="Quantity">Quantity</h5>
+                                    <h5 class="none" id="QuantityValue"></h5>
+                                </div>
+                                <div class="flex center align-items ml-auto">
+                                    <h5 class="none mr-3" id="size">Size</h5>
+                                    <h5 class="none" id="sizevalue"></h5>
+                                </div>
+                                <div class="flex center align-items ml-auto">
+                                    <label class="circle none mr-3" id="Colorcircle"></label>
+                                    <h5 class="none color-value" id="colorvalue"></h5>
+                                </div>
+                            </div>
+                            <div class="product-data" id="product-data">
+                                <div class="flex mb-3">
+                                    <input id="size" type="text" name="" placeholder="Size" class="formbold-form-input m-LR-2" />
+                                    <div class="color-input-wrapper m-LR-2">
+                                        <div class="flex center align-items">
+                                            <input style="width:45px;" type="text" name="" class="formbold-form-input" />
+                                            <input id="Color" type="color" class="color-picker">
+                                        </div>
+                                    </div>
+                                    <input id="quantity" type="text" name="" placeholder="Quantity" class="formbold-form-input m-LR-2" />
+                                </div>
+                                <div class="flex mb-3">
+                                    <input type="text" name="Url1[]" placeholder="pic Url 1" class="formbold-form-input m-LR-2" />
+                                    <input type="text" name="Url2[]" placeholder="pic Url 2" class="formbold-form-input m-LR-2" />
+                                </div>
+                            </div>
+                        `;
+
+                    inputContainer.appendChild(newInputSet);
+                    setupToggleExpand(newInputSet.querySelector('.toggle-expand'));
+                    setupDeleteButton(newInputSet.querySelector('.toggle-delete'));
+                });
+
+                function setupToggleExpand(button) {
+                    button.addEventListener('click', function () {
+                        const expandIcon = button.querySelector('.bi-arrows-angle-expand');
+                        const contractIcon = button.querySelector('.bi-arrows-angle-contract');
+                        const productData = button.closest('.input-set').querySelector('#product-data');
+                        const sizeLabel = button.closest('.i-div').querySelector('#size');
+                        const QtyLabel = button.closest('.i-div').querySelector('#Quantity');
+                        const ColorcircleLabel = button.closest('.i-div').querySelector('#Colorcircle');
+                        const sizevalue = button.closest('.i-div').querySelector('#sizevalue');
+                        const colorvalue = button.closest('.i-div').querySelector('#colorvalue');
+                        const Qtyvalue = button.closest('.i-div').querySelector('#QuantityValue');
+
+                        const productRecord = button.closest('.product-record');
+                        const id = productRecord ? productRecord.id : null;
+
+                        if (id) {
+                            const productDiv = document.getElementById(id);
+                            const sizeInput = productDiv.querySelector('input#size');
+                            const colorInput = productDiv.querySelector('input#Color');
+                            const quantityInput = productDiv.querySelector('input#quantity');
+                            const ColorcircleLabel = productDiv.querySelector('label#Colorcircle');
+
+                            const size = sizeInput ? sizeInput.value : '';
+                            const color = colorInput ? colorInput.value : '';
+                            const Qty = quantityInput ? quantityInput.value : '';
+
+                            if (ColorcircleLabel) {
+                                ColorcircleLabel.style.backgroundColor = color;
+                            }
+
+                            sizevalue.innerText = size;
+                            colorvalue.innerText = color;
+                            Qtyvalue.innerText = Qty;
+                        }
+
+                        if (expandIcon.classList.contains('none')) {
+                            expandIcon.classList.remove('none');
+                            contractIcon.classList.add('none');
+                            productData.classList.add('none');
+                            sizeLabel.classList.remove('none');
+                            ColorcircleLabel.classList.remove('none');
+                            QtyLabel.classList.remove('none');
+                            sizevalue.classList.remove('none');
+                            colorvalue.classList.remove('none');
+                            Qtyvalue.classList.remove('none');
+                        } else {
+                            expandIcon.classList.add('none');
+                            contractIcon.classList.remove('none');
+                            productData.classList.remove('none');
+                            sizeLabel.classList.add('none');
+                            ColorcircleLabel.classList.add('none');
+                            QtyLabel.classList.add('none');
+                            sizevalue.classList.add('none');
+                            colorvalue.classList.add('none');
+                            Qtyvalue.classList.add('none');
+                        }
+                    });
+                }
+
+                function setupDeleteButton(button) {
+                    button.addEventListener('click', function () {
+                        const productRecord = button.closest('.product-record');
+                        const id = productRecord ? productRecord.id : null;
+
+                        if (id) {
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "Do you want to delete this item?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Yes, delete it!',
+                                cancelButtonText: 'No, keep it',
+                                customClass: {
+
+                                    title: 'swal2-custom',
+                                    htmlContainer: 'swal2-custom',
+                                    confirmButton: 'swal2-custom',
+                                    cancelButton: 'swal2-custom',
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById(id).remove();
+                                    Swal.fire({
+                                        title: 'Deleted!',
+                                        text: 'Your item has been deleted.',
+                                        icon: 'success',
+                                        customClass: {
+                                            container: 'swal2-custom',
+                                            title: 'swal2-custom',
+                                            htmlContainer: 'swal2-custom',
+                                            confirmButton: 'swal2-custom',
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+
+
+                document.querySelectorAll('.toggle-expand').forEach(button => {
+                    setupToggleExpand(button);
+                });
+
+                document.querySelectorAll('.toggle-delete').forEach(button => {
+                    setupDeleteButton(button);
+                });
+            </script>
+
+            <button class="formbold-btn">Submit</button>
+            </form> -->
+            <form id="product-form" action="https://formbold.com/s/FORM_ID" method="POST">
+                <div class="formbold-input-group">
+                    <label for="producttitle" class="formbold-form-label"> Product-Title </label>
+                    <input type="text" name="product-title" id="producttitle" placeholder="Enter your product title"
+                        class="formbold-form-input shadow" />
+                </div>
+                <div class="formbold-input-group">
+                    <label for="brandname" class="formbold-form-label"> Brand-Name </label>
+                    <input type="text" name="Brand-Name" id="brandname" placeholder="Enter your brand name"
+                        class="formbold-form-input shadow" />
+                </div>
+                <div class="formbold-input-group">
+                    <div class="flex center align-items">
+                        <div class="formbold-input-group m-LR-2" style="width: 40%;">
+                            <label for="productprice" class="formbold-form-label"> Price </label>
+                            <input type="text" name="Product-Price" id="productprice" placeholder="EGP"
+                                class="formbold-form-input shadow" />
+                        </div>
+                        <div class="formbold-input-group m-LR-2" style="width: 40%;">
+                            <label for="sale-amount" class="formbold-form-label"> Sale</label>
+                            <input type="text" name="sale-amount" id="sale-amount" placeholder="%"
+                                class="formbold-form-input shadow" />
+                        </div>
+                        <div class="formbold-input-group m-LR-2" style="width: 40%;">
+                            <label for="category" class="formbold-form-label">Category</label>
+                            <div class="shadow">
+                                <select style="height: 49px;" name="category" id="category" class="formbold-form-input">
+                                    <option value="men">Men</option>
+                                    <option value="women">Women</option>
+                                    <option value="kids">Kids</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formbold-input-group">
+                    <label for="productdescription" class="formbold-form-label"> Product Description </label>
+                    <textarea rows="6" name="product-description" id="productdescription"
+                        placeholder="Type product description here..." class="formbold-form-input shadow"></textarea>
+                </div>
+                <div class="formbold-input-group">
+                    <div class="flex center align-items shadow p5 mb-20">
+                        <label for="name" class="formbold-form-label" style="margin-bottom:0 !important;"> Add Products
+                        </label>
+                        <button type="button" class="formbold-form-label point addbtn" id="add-more">
+                            <i class="bi bi-plus-square"></i>
+                        </button>
+                    </div>
+                    <div id="input-container"></div>
+                </div>
+                <button id="sub-btn" type="submit" class="formbold-btn formbold-sub-btn flex center align-items">
+                    <div id="sub-txt">Submit</div>
+                    <div id="sub-spin" class="spinner hidden">
+                    </div>
+                </button>
+            </form>
+
+            <script>
+                document.getElementById('add-more').addEventListener('click', function () {
+                    let count = document.querySelectorAll('.input-set').length + 1;
+                    const inputContainer = document.getElementById('input-container');
+
+                    const newInputSet = document.createElement('div');
+                    newInputSet.classList.add('flex', 'center', 'input-set', 'mb-3', 'flex-wrap', 'mb-30', 'add-product-cart', 'product-record', 'shadow');
+                    newInputSet.id = `p${count}`;
+
+                    newInputSet.innerHTML = `
+                    <div class="i-div align-items">
+                        <button type="button" style="border: none; margin-left:5px;margin-bottom: 0px;" class="formbold-form-label point toggle-expand no-bg-i cus-btn">
+                            <i class="bi bi-arrows-angle-contract no-bg-i"></i>
+                            <i class="bi bi-arrows-angle-expand none no-bg-i"></i>
+                        </button>
+                        <button type="button" style="border: none; margin-left:auto" class=" point no-bg-i toggle-delete ml-auto cus-btn">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                        <div class="flex center align-items ml-auto">
+                            <h5 class="none mr-3" id="Quantity">Quantity</h5>
+                            <h5 class="none" id="QuantityValue"></h5>
+                        </div>
+                        <div class="flex center align-items ml-auto">
+                            <h5 class="none mr-3" id="size">Size</h5>
+                            <h5 class="none" id="sizevalue"></h5>
+                        </div>
+                        <div class="flex center align-items ml-auto">
+                            <label class="circle none mr-3" id="Colorcircle"></label>
+                            <h5 class="none color-value" id="colorvalue"></h5>
+                        </div>
+                    </div>
+                    <div class="product-data" id="product-data">
+                        <div class="flex mb-3">
+                            <input id="size" type="text" name="size" placeholder="Size" class="formbold-form-input m-LR-2" />
+                            
+                            <input id="quantity" type="text" name="quantity" placeholder="Quantity" class="formbold-form-input m-LR-2" />
+                        </div>
+                        
+                        <div class="flex mb-3">
+                            <input type="text" name="product-photo" placeholder="pic Url 1" class="formbold-form-input m-LR-2" />
+                            <input type="text" name="product-photo2" placeholder="pic Url 2" class="formbold-form-input m-LR-2" />
+                        </div>
+                        <div class="flex center  mb-3">
+                            <div class="color-input-wrapper m-LR-2 ">
+                                <div class="flex center align-items">
+                                    <input style="width:45px;" type="text" name="color" class="formbold-form-input" />
+                                    <input id="Color" type="color" name="color-value" class="color-picker">
+                                </div>
+                            </div>
+                            <input id="colorname" type="text" name="color-name" style="width: 50%;" placeholder="Black" class="formbold-form-input m-LR-2" />
+                        </div>
+                    </div>
+                `;
+
+                    inputContainer.appendChild(newInputSet);
+                    setupToggleExpand(newInputSet.querySelector('.toggle-expand'));
+                    setupDeleteButton(newInputSet.querySelector('.toggle-delete'));
+                });
+
+                function setupToggleExpand(button) {
+                    button.addEventListener('click', function () {
+                        const expandIcon = button.querySelector('.bi-arrows-angle-expand');
+                        const contractIcon = button.querySelector('.bi-arrows-angle-contract');
+                        const productData = button.closest('.input-set').querySelector('#product-data');
+                        const sizeLabel = button.closest('.i-div').querySelector('#size');
+                        const QtyLabel = button.closest('.i-div').querySelector('#Quantity');
+                        const ColorcircleLabel = button.closest('.i-div').querySelector('#Colorcircle');
+                        const sizevalue = button.closest('.i-div').querySelector('#sizevalue');
+                        const colorvalue = button.closest('.i-div').querySelector('#colorvalue');
+                        const Qtyvalue = button.closest('.i-div').querySelector('#QuantityValue');
+
+                        const productRecord = button.closest('.product-record');
+                        const id = productRecord ? productRecord.id : null;
+
+                        if (id) {
+                            const productDiv = document.getElementById(id);
+                            const sizeInput = productDiv.querySelector('input#size');
+                            const colorInput = productDiv.querySelector('input#Color');
+                            const quantityInput = productDiv.querySelector('input#quantity');
+                            const ColorcircleLabel = productDiv.querySelector('label#Colorcircle');
+
+                            const size = sizeInput ? sizeInput.value : '';
+                            const color = colorInput ? colorInput.value : '';
+                            const Qty = quantityInput ? quantityInput.value : '';
+
+                            if (ColorcircleLabel) {
+                                ColorcircleLabel.style.backgroundColor = color;
+                            }
+
+                            sizevalue.innerText = size;
+                            colorvalue.innerText = color;
+                            Qtyvalue.innerText = Qty;
+                        }
+
+                        if (expandIcon.classList.contains('none')) {
+                            expandIcon.classList.remove('none');
+                            contractIcon.classList.add('none');
+                            productData.classList.add('none');
+                            sizeLabel.classList.remove('none');
+                            ColorcircleLabel.classList.remove('none');
+                            QtyLabel.classList.remove('none');
+                            sizevalue.classList.remove('none');
+                            colorvalue.classList.remove('none');
+                            Qtyvalue.classList.remove('none');
+                        } else {
+                            expandIcon.classList.add('none');
+                            contractIcon.classList.remove('none');
+                            productData.classList.remove('none');
+                            sizeLabel.classList.add('none');
+                            ColorcircleLabel.classList.add('none');
+                            QtyLabel.classList.add('none');
+                            sizevalue.classList.add('none');
+                            colorvalue.classList.add('none');
+                            Qtyvalue.classList.add('none');
+                        }
+                    });
+                }
+
+                function setupDeleteButton(button) {
+                    button.addEventListener('click', function () {
+                        const productRecord = button.closest('.product-record');
+                        const id = productRecord ? productRecord.id : null;
+
+                        if (id) {
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "Do you want to delete this item?",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Yes, delete it!',
+                                cancelButtonText: 'No, keep it',
+                                customClass: {
+
+                                    title: 'swal2-custom',
+                                    htmlContainer: 'swal2-custom',
+                                    confirmButton: 'swal2-custom',
+                                    cancelButton: 'swal2-custom',
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById(id).remove();
+                                    Swal.fire({
+                                        title: 'Deleted!',
+                                        text: 'Your item has been deleted.',
+                                        icon: 'success',
+                                        customClass: {
+                                            container: 'swal2-custom',
+                                            title: 'swal2-custom',
+                                            htmlContainer: 'swal2-custom',
+                                            confirmButton: 'swal2-custom',
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+
+                // Function to handle form submission
+
+
+            </script>
+            <!-- Add the Firebase SDK scripts with version 8.x -->
+
+
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+            <!-- <script>
+                const firebaseConfig = {
+                    apiKey: "AIzaSyACe1lHeGGZFrFBvr1KGPnE7Gu_Ayhh9ZQ",
+                    authDomain: "queen-s-footwear.firebaseapp.com",
+                    databaseURL: "https://queen-s-footwear-default-rtdb.firebaseio.com",
+                    projectId: "queen-s-footwear",
+                    storageBucket: "queen-s-footwear.appspot.com",
+                    messagingSenderId: "674887836342",
+                    appId: "1:674887836342:web:381904961e23de7cd4bc17",
+                    measurementId: "G-FN6G0NHL8V"
+                };
+
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+
+                document.getElementById('product-form').addEventListener('submit', function (event) {
+                    event.preventDefault(); // Prevent default form submission behavior
+
+                    // Collect input values
+                    const formData = new FormData(this);
+                    const product = {
+                        "Brand-Name": formData.get('Brand-Name'),
+                        "Product-Price": formData.get('Product-Price'),
+                        "category": formData.get('category'),
+                        "sale-amount": formData.get('sale-amount'),
+                        "product-description": formData.get('product-description'),
+                        "posted-at": new Date().toLocaleString(),
+                        "product-photo": "", // Placeholder, will be set later
+                        "product-photo2": "", // Placeholder, will be set later
+                        "product-title": formData.get('product-title'),
+                        "sizes": [] // Array to store size objects
+                    };
+
+                    // Object to store size entries temporarily
+                    const sizeEntries = {};
+
+                    // Iterate through each product input set
+                    document.querySelectorAll('.input-set').forEach((productSet) => {
+                        const size = productSet.querySelector('input[name="size"]').value;
+                        const colorname = productSet.querySelector('input[name="color-name"]').value;
+                        const colorValue = productSet.querySelector('input[name="color-value"]').value;
+                        const quantity = parseInt(productSet.querySelector('input[name="quantity"]').value); // Convert to integer
+                        const imageUrl1 = productSet.querySelector('input[name="product-photo"]').value;
+                        const imageUrl2 = productSet.querySelector('input[name="product-photo2"]').value;
+
+                        // Set product photos if not already set
+                        if (!product["product-photo"]) product["product-photo"] = imageUrl1;
+                        if (!product["product-photo2"]) product["product-photo2"] = imageUrl2;
+
+                        // Create the color object
+                        const colorObject = {
+                            "color-value": colorValue,
+                            "img1": imageUrl1,
+                            "img2": imageUrl2,
+                            "qty": quantity
+                        };
+
+                        // Check if the size already exists in the temporary sizeEntries object
+                        if (!sizeEntries[size]) {
+                            sizeEntries[size] = {};
+                        }
+
+                        // Add the color object to the corresponding size
+                        sizeEntries[size][colorname] = colorObject;
+                    });
+
+                    // Convert sizeEntries object to an array format
+                    for (let size in sizeEntries) {
+                        if (sizeEntries.hasOwnProperty(size)) {
+                            const sizeObject = {
+                                [size]: sizeEntries[size]
+                            };
+                            product.sizes.push(sizeObject);
+                        }
+                    }
+
+                    // Initialize Firebase
+                    const database = firebase.database();
+
+                    // Reference to the products node in the database
+                    const productsRef = database.ref('Products');
+
+                    // Push the product object to Firebase
+                    productsRef.push(product)
+                        .then(() => {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Form data submitted successfully.',
+                                icon: 'success',
+                                customClass: {
+                                    container: 'swal2-custom',
+                                    title: 'swal2-custom'
+                                }
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error adding document: ', error);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'An error occurred while submitting the form.',
+                                icon: 'error',
+                                customClass: {
+                                    container: 'swal2-custom',
+                                    title: 'swal2-custom'
+                                }
+                            });
+                        });
+                }); -->
+            <!-- </script> -->
+            <script>
+                const firebaseConfig = {
+                    apiKey: "AIzaSyACe1lHeGGZFrFBvr1KGPnE7Gu_Ayhh9ZQ",
+                    authDomain: "queen-s-footwear.firebaseapp.com",
+                    databaseURL: "https://queen-s-footwear-default-rtdb.firebaseio.com",
+                    projectId: "queen-s-footwear",
+                    storageBucket: "queen-s-footwear.appspot.com",
+                    messagingSenderId: "674887836342",
+                    appId: "1:674887836342:web:381904961e23de7cd4bc17",
+                    measurementId: "G-FN6G0NHL8V"
+                };
+
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+
+                document.getElementById('product-form').addEventListener('submit', function (event) {
+                    event.preventDefault(); // Prevent default form submission behavior
+
+                    // Show the preloader and disable the submit button
+                    const submitButton = document.getElementById('sub-spin');
+                    const submitTxt = document.getElementById('sub-txt');
+
+                    submitTxt.classList.add('hidden');
+                    submitButton.classList.remove('hidden');
+
+
+
+                    // Collect input values
+                    const formData = new FormData(this);
+                    const product = {
+                        "Brand-Name": formData.get('Brand-Name'),
+                        "Product-Price": formData.get('Product-Price'),
+                        "category": formData.get('category'),
+                        "sale-amount": formData.get('sale-amount'),
+                        "product-description": formData.get('product-description'),
+                        "posted-at": new Date().toLocaleString(),
+                        "product-photo": "", // Placeholder, will be set later
+                        "product-photo2": "", // Placeholder, will be set later
+                        "product-title": formData.get('product-title'),
+                        "sizes": {} // Object to store sizes and colors
+                    };
+
+                    // Iterate through each product input set
+                    document.querySelectorAll('.input-set').forEach((productSet) => {
+                        const size = productSet.querySelector('input[name="size"]').value;
+                        const colorname = productSet.querySelector('input[name="color-name"]').value;
+                        const colorValue = productSet.querySelector('input[name="color-value"]').value;
+                        const quantity = parseInt(productSet.querySelector('input[name="quantity"]').value); // Convert to integer
+                        const imageUrl1 = productSet.querySelector('input[name="product-photo"]').value;
+                        const imageUrl2 = productSet.querySelector('input[name="product-photo2"]').value;
+
+                        // Set product photos if not already set
+                        if (!product["product-photo"]) product["product-photo"] = imageUrl1;
+                        if (!product["product-photo2"]) product["product-photo2"] = imageUrl2;
+
+                        // Create the color object
+                        const colorObject = {
+                            "color-value": colorValue,
+                            "img1": imageUrl1,
+                            "img2": imageUrl2,
+                            "qty": quantity
+                        };
+
+                        // Check if the size already exists in the product's sizes object
+                        if (!product.sizes[size]) {
+                            product.sizes[size] = {};
+                        }
+
+                        // Add the color object to the corresponding size
+                        product.sizes[size][colorname] = colorObject;
+                    });
+
+                    // Initialize Firebase
+                    const database = firebase.database();
+
+                    // Reference to the products node in the database
+                    const productsRef = database.ref('Products');
+
+                    // Push the product object to Firebase
+                    productsRef.push(product)
+                        .then(() => {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Form data submitted successfully.',
+                                icon: 'success',
+                                customClass: {
+                                    container: 'swal2-custom',
+                                    title: 'swal2-custom'
+                                }
+                            });
+                            submitTxt.classList.remove('hidden');
+                            submitButton.classList.add('hidden');
+                        })
+                        .catch(error => {
+                            console.error('Error adding document: ', error);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'An error occurred while submitting the form.',
+                                icon: 'error',
+                                customClass: {
+                                    container: 'swal2-custom',
+                                    title: 'swal2-custom'
+                                }
+                            });
+                        });
+                });
+            </script>
+
+        </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,575 @@
+<head>
+    <meta charset="UTF-8">
+    <style data-styles="">
+        ion-icon {
+            visibility: hidden
+        }
+
+        .hydrated {
+            visibility: inherit
+        }
+
+        body {
+            padding-top: 1px !important;
+        }
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footcap - Find your footware</title>
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap -->
+
+    <!-- 
+    - preload banner
+  -->
+    <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+
+</head>
+<main>
+    <div id="preloader">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+
+    <div class="product-area" id="product-area">
+
+        <section class="section product">
+
+            <div class="flex center" id="productDetailsSection">
+                <div class="flex width-90">
+                    <div class="flex">
+                        <div id="product-div" class="flex center align-items">
+
+                            <div class="content-photo-container">
+                                <button id="previous-button" class="previous-button none-op"><i
+                                        class="bi bi-arrow-left-short arrow"></i></button>
+                                <img id="productImage" class="m-5 product-image active"
+                                    style="height: min-content;width: 30%;" src="" alt="Product Image">
+                                <img id="productImage2" class="m-5 product-image"
+                                    style="height: min-content;width: 30%;" src="" alt="Product Image">
+                                <button id="next-button" class="next-button none-op"><i
+                                        class="bi bi-arrow-right-short arrow"></i></button>
+                            </div>
+                            <script>
+                                const images = document.querySelectorAll('.product-image');
+                                let currentIndex = 0;
+
+                                function showImage(index) {
+                                    images[currentIndex].classList.remove('active');
+                                    images[index].classList.add('active');
+                                    currentIndex = index;
+                                }
+
+                                document.getElementById('previous-button').addEventListener('click', () => {
+                                    const previousIndex = (currentIndex - 1 + images.length) % images.length;
+                                    showImage(previousIndex);
+                                });
+
+                                document.getElementById('next-button').addEventListener('click', () => {
+                                    const nextIndex = (currentIndex + 1) % images.length;
+                                    showImage(nextIndex);
+                                });
+
+                                // Show the first image initially
+                                showImage(0);
+                            </script>
+
+                            <div class="details-info p-20">
+                                <h5 id="BrandName" class="mb-10 m-5 pl-0"></h5>
+                                <h2 id="productTitle" class="m-5 ml-auto mb-10"></h2>
+                                <p id="productPrice" class="m-5 mb-10"></p>
+
+                                <div class="size m-5 mb-10">
+                                    <label class="m-5 flex" for="product-Size">
+                                        Size:<p id="product-Size"> </p>
+                                    </label>
+
+                                    <div role="radiogroup" class="radio-group size-tabs m-5 mb-10">
+
+                                        <div class="size-radio  
+                                                                                            
+                                                                                            ">
+                                            <label class="radio-input_option">
+                                                <span class="size-value">35</span>
+                                            </label>
+                                        </div>
+                                        <div class="size-radio  
+                                                                                            
+                                                                                            ">
+                                            <label class="radio-input_option">
+                                                <span class="size-value">36</span>
+                                            </label>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class="color-selector m-5 mb-10">
+                                    <label class="m-5 flex align-items" for="product-color">Color:<p id="product-color">
+                                        <p class="hint-sml" id="hint">Choose size first!</p>
+                                        </p>
+                                    </label>
+                                    <div class="color-options m-5 flex-wrap width-80 mb-10">
+
+                                    </div>
+                                    <h5 class="mb-10 m-5 flex pl-0">SKU:<p id="productID"></p>
+                                    </h5>
+                                </div>
+
+                                <div class="m-5">
+                                    <button id="addToCartButton" class="Add-to-Cart">Add
+                                        to Cart
+                                        <i class="bi"></i>
+                                    </button>
+
+                                </div>
+                                <!--cart validation-->
+                                <script>
+                                    // Function to check if elements are empty and toggle button state
+                                    function checkAndToggleButton(sizeId, colorId, buttonId) {
+                                        const sizeElement = document.getElementById(sizeId);
+                                        const colorElement = document.getElementById(colorId);
+                                        const buttonElement = document.getElementById(buttonId);
+                                        const carti = buttonElement.querySelector('i'); // Get the icon element
+
+
+                                        // Check if either size or color element is empty
+                                        if (!sizeElement.innerText.trim() || !colorElement.innerText.trim()) {
+                                            buttonElement.disabled = true; // Disable the button
+                                            buttonElement.style.opacity = '0.5'; // Set opacity to 0.5
+                                            carti.classList.remove('bi-bag-check');
+                                            carti.classList.add('bi-exclamation-lg');
+                                            buttonElement.removeAttribute('onclick'); // Remove onclick attribute if any
+                                        } else {
+                                            buttonElement.disabled = false; // Enable the button
+                                            buttonElement.style.opacity = '1'; // Set opacity to 1
+                                            carti.classList.remove('bi-exclamation-lg');
+                                            carti.classList.add('bi-bag-check');
+                                            buttonElement.setAttribute('onclick', 'addToCart()'); // Add onclick attribute
+                                        }
+                                    }
+
+                                    // Add event listeners for size and color selection
+                                    const sizeOptions = document.querySelectorAll(".size-radio");
+                                    sizeOptions.forEach(option => {
+                                        option.addEventListener("click", function () {
+                                            const sizeElement = document.getElementById("product-Size");
+                                            sizeElement.innerText = option.querySelector(".size-value").innerText;
+                                            checkAndToggleButton("product-Size", "product-color", "addToCartButton");
+                                        });
+                                    });
+
+                                    const color = document.querySelectorAll(".color-option");
+                                    color.forEach(option => {
+                                        option.addEventListener("click", function () {
+                                            const colorElement = document.getElementById("product-color");
+                                            colorElement.innerText = option.getAttribute("data-color-name");
+                                            checkAndToggleButton("product-Size", "product-color", "addToCartButton");
+                                        });
+                                    });
+
+                                    // Example of updating the size and color elements
+                                    // and calling the function to check and toggle button state on page load
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        checkAndToggleButton("product-Size", "product-color", "addToCartButton");
+                                    });
+                                </script>
+                                <!-- add to cart-->
+                                <script>
+
+                                    function addToCart() {
+                                        const title = document.getElementById("productTitle").innerText;
+                                        const brandName = document.getElementById("BrandName").innerText;
+                                        const productPrice = document.getElementById("productPrice").innerText;
+                                        const productSize = document.getElementById("product-Size").innerText;
+                                        const productColor = document.getElementById("product-color").innerText;
+                                        const productID = document.getElementById("productID").innerText;
+
+                                        // Get the reference to the img element
+                                        const productImage = document.getElementById('productImage');
+
+                                        // Get the src attribute value
+                                        const srcValue = productImage.getAttribute('src');
+
+
+                                        const newItem = {
+                                            id: productID,
+                                            brand: brandName,
+                                            title: title,
+                                            productSize: productSize,
+                                            productColor: productColor,
+                                            price: productPrice,
+                                            photourl: srcValue
+                                        };
+
+                                        // Retrieve cart from local storage or initialize it as an empty array
+                                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                                        // Add the new item to the cart
+                                        cart.push(newItem);
+
+                                        // Store the updated cart back to local storage
+                                        localStorage.setItem('cart', JSON.stringify(cart));
+
+
+
+                                        // Change button text and add a message using SweetAlert
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Added to Cart',
+                                            showConfirmButton: false,
+                                            timer: 1500 // Close the alert after 1.5 seconds
+                                        });
+
+                                        // Function to reload the window
+                                        function reloadWindow() {
+                                            location.reload();
+
+                                        }
+
+
+                                    }
+
+                                </script>
+
+                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                                <!-- Add other product details here as needed -->
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+    </div>
+</main>
+
+
+
+
+
+
+<!-- 
+    - #GO TO TOP
+  -->
+
+<a href="#top" class="go-top-btn" data-go-top="">
+    <ion-icon name="arrow-up-outline" role="img" class="md hydrated" aria-label="arrow up outline"></ion-icon>
+</a>
+<!-- 
+    - custom js link
+  -->
+
+
+<!-- 
+    - ionicon link
+  -->
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    // Function to extract query parameters from URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Fetch key from URL query parameters
+    var key = getParameterByName('key');
+
+
+</script>
+<script>
+    // function fetchProducts(key) {
+    //     fetch(`https://queen-s-footwear-default-rtdb.firebaseio.com/Products/${key}.json`)
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 throw new Error("Network response was not ok");
+    //             }
+    //             return response.json();
+    //             console.log(response);
+    //         })
+    //         .then((productDetails) => {
+
+    //             // Once you have the product details, populate the #productDetailsSection
+    //             const productTitleElement = document.getElementById('productTitle');
+    //             const productID = document.getElementById('productID');
+    //             const productImageElement = document.getElementById('productImage');
+    //             const productImage2Element = document.getElementById('productImage2');
+    //             const productPriceElement = document.getElementById('productPrice');
+    //             const BrandNameElement = document.getElementById('BrandName');
+
+    //             // Populate product details
+    //             BrandNameElement.innerText = productDetails["Brand-Name"];
+    //             productTitleElement.innerText = productDetails["product-title"];
+    //             productID.innerText = key;
+    //             productImageElement.src = productDetails["product-photo"]; // Set the product image source
+    //             productImage2Element.src = productDetails["product-photo2"]; // Set the product image source
+    //             productPriceElement.innerText = productDetails["Product-Price"];
+
+    //             // Add other product details as needed
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error fetching product details:", error);
+    //         });
+    // }
+
+    function fetchProducts(key) {
+        fetch(`https://queen-s-footwear-default-rtdb.firebaseio.com/Products/${key}.json`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((productDetails) => {
+                // Elements to populate
+                const productTitleElement = document.getElementById('productTitle');
+                const productID = document.getElementById('productID');
+                const productImageElement = document.getElementById('productImage');
+                const productImage2Element = document.getElementById('productImage2');
+                const productPriceElement = document.getElementById('productPrice');
+                const BrandNameElement = document.getElementById('BrandName');
+                const hintElement = document.getElementById('hint');
+
+                // Populate product details
+                BrandNameElement.innerText = productDetails["Brand-Name"];
+                productTitleElement.innerText = productDetails["product-title"];
+                productID.innerText = key;
+                productImageElement.src = productDetails["product-photo"];
+                productImage2Element.src = productDetails["product-photo2"];
+                productPriceElement.innerText = `${productDetails["Product-Price"]} EGP`;
+
+                // Handling sizes and colors
+                const sizes = productDetails.sizes;
+                const sizeTabs = document.querySelector('.size-tabs');
+                const colorOptions = document.querySelector('.color-options');
+                const productSizeElement = document.getElementById('product-Size');
+                const productColorElement = document.getElementById('product-color');
+
+                sizeTabs.innerHTML = ''; // Clear previous size options
+                colorOptions.innerHTML = ''; // Clear previous color options
+
+                for (const size in sizes) {
+                    const sizeRadio = document.createElement('div');
+                    sizeRadio.classList.add('size-radio');
+                    sizeRadio.setAttribute('onclick', 'SizeRef()');
+
+
+                    const label = document.createElement('label');
+                    label.classList.add('radio-input_option');
+
+                    const span = document.createElement('span');
+                    span.classList.add('size-value');
+                    span.innerText = size;
+
+                    label.appendChild(span);
+                    sizeRadio.appendChild(label);
+                    sizeTabs.appendChild(sizeRadio);
+
+                    // Event listener for size selection
+                    sizeRadio.addEventListener('click', function () {
+                        productSizeElement.innerText = size;
+                        colorOptions.innerHTML = ''; // Clear color options when size is selected
+
+                        // Hide the hint element
+                        hintElement.classList.add('hidden');
+
+                        const colors = sizes[size];
+                        
+
+                        for (const color in colors) {
+                            const colorOption = document.createElement('div');
+                            colorOption.classList.add('color-option');
+
+                            colorOption.style.backgroundColor = colors[color]["color-value"];
+                            colorOption.setAttribute('data-color-name', color);
+                            colorOption.addEventListener('click', function (colorName) {
+                                var colorName = colorOption.getAttribute('data-color-name');
+                                // Call the updateProductImages function with the specified parameters
+                                showPreloader()
+                                updateProductImages(colorName);
+                                // Hide the preloader after 500 milliseconds (0.5 seconds)
+                                setTimeout(() => {
+                                    hidePreloader();
+                                }, 500);
+                            });
+                            colorOption.addEventListener('click', function () {
+                                productColorElement.innerText = color;
+                                checkAndToggleButton("product-Size", "product-color", "addToCartButton");
+                            });
+
+                            colorOptions.appendChild(colorOption);
+                        }
+
+                        checkAndToggleButton("product-Size", "product-color", "addToCartButton");
+                    });
+                }
+
+                checkAndToggleButton("product-Size", "product-color", "addToCartButton");
+            })
+            .catch((error) => {
+                console.error("Error fetching product details:", error);
+            });
+    }
+
+    fetchProducts(key);
+    //fetchProducts(key)
+
+    function SizeRef() {
+        const colorOptions = document.getElementById('product-color');
+        if (colorOptions) {
+            colorOptions.innerHTML = '';
+        }
+    }
+    // Function to show preloader
+    function showPreloader() {
+        document.getElementById('preloader').classList.remove('hidden');
+
+
+    }
+
+    // Function to hide preloader
+    function hidePreloader() {
+        document.getElementById('preloader').classList.add('hidden');
+
+
+    }
+
+    // Fetch product details after 2 seconds
+    setTimeout(() => {
+
+        hidePreloader(); // Hide preloader after 2 seconds
+        // Fetch product details
+    }, 1000);
+
+
+    // on click on color options 
+    function updateProductImages(colorName) {
+        const size = document.getElementById('product-Size').innerText;
+        const productID = document.getElementById('productID').innerText;
+
+
+        const url = `https://queen-s-footwear-default-rtdb.firebaseio.com/Products/${productID}/sizes/${size}/${colorName}.json`;
+
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const productImageElement = document.getElementById('productImage');
+                const productImage2Element = document.getElementById('productImage2');
+
+                productImageElement.src = data.img1;
+                productImage2Element.src = data.img2;
+            })
+            .catch((error) => {
+                console.error("Error fetching product images:", error);
+            });
+    }
+</script>
+<script>
+    const colorOptions = document.querySelectorAll('.color-option');
+
+    colorOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            colorOptions.forEach(otherOption => otherOption.classList.remove('selected'));
+            option.classList.add('selected');
+        });
+    });
+
+</script>
+<script>
+    // JavaScript to handle the click event on size radio buttons
+    var sizeRadios = document.querySelectorAll('.size-radio');
+    var productSizeLabel = document.getElementById('product-Size');
+
+    sizeRadios.forEach(function (radio) {
+        radio.addEventListener('click', function () {
+            // Remove the 'active' class from all size radios
+            sizeRadios.forEach(function (radio) {
+                radio.classList.remove('active');
+            });
+            // Add the 'active' class to the clicked size radio
+            this.classList.add('active');
+
+            // Update the product size label with the chosen size
+            var sizeValue = this.querySelector('.size-value').innerText;
+            productSizeLabel.textContent = sizeValue;
+        });
+    });
+</script>
+<script>
+    // JavaScript to handle the click event on color options
+    var colorOption = document.querySelectorAll('.color-option');
+    var productColorLabel = document.getElementById('product-color');
+
+    colorOption.forEach(function (option) {
+        option.addEventListener('click', function () {
+            // Update the product color label with the chosen color name
+            var colorName = this.getAttribute('data-color-name');
+            if (colorName) {
+                productColorLabel.textContent = colorName;
+            } else {
+                productColorLabel.textContent = "Color";
+            }
+
+            // Remove 'active' class from all color options
+            colorOptions.forEach(function (option) {
+                option.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked color option
+            this.classList.add('active');
+        });
+    });
+</script>
+
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
