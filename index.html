@@ -268,6 +268,30 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select all navbar list items
+            const navbarItems = document.querySelectorAll('.navbar-list .navbar-item');
+            const overlay = document.querySelector("[data-overlay]");
+
+            // Function to remove 'active' class from the navbar
+            function removeActiveClass() {
+                const navbar = document.querySelector('.navbar');
+                if (navbar.classList.contains('active')) {
+                    navbar.classList.remove('active');
+                    overlay.classList.remove('active');
+
+                }
+            }
+
+            // Attach click event listeners to each navbar item
+            navbarItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    removeActiveClass();
+                });
+            });
+        });
+    </script>
+    <script>
         ///
 
         const overlay = document.querySelector("[data-overlay]");
