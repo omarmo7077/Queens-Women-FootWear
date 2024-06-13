@@ -267,11 +267,12 @@
   -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
+     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Select all navbar list items
             const navbarItems = document.querySelectorAll('.navbar-list .navbar-item');
             const overlay = document.querySelector("[data-overlay]");
+            const cartButton = document.querySelector('.nav-action-btn ion-icon[name="bag-outline"]').parentNode;
 
             // Function to remove 'active' class from the navbar
             function removeActiveClass() {
@@ -288,6 +289,12 @@
                 item.addEventListener('click', function () {
                     removeActiveClass();
                 });
+            });
+
+            
+
+            cartButton.addEventListener('click', function () {
+                removeActiveClass();
             });
         });
     </script>
