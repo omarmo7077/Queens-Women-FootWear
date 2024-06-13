@@ -564,7 +564,7 @@ body {
 .nav-action-badge {
   margin-left: auto;
   font-size: var(--fs-8);
-  background: black;
+  background: #d85773;
   color: var(--white);
   width: 18px;
   height: 18px;
